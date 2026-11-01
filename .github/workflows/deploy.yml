@@ -37,7 +37,9 @@ jobs:
         with:
           node-version: "22"
 
-      - run: npm install --global @levimc/lip
+      # lip 0.36 moved to package format 4, and its `lip migrate` no longer turns a tooth.json into the current
+      # tooth.json format: with it every version not already in the cache is left out of the indexes
+      - run: npm install --global @levimc/lip@0.35.0
 
       - uses: actions/cache/restore@v6
         with:
